@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>MySlice</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    //在数组的原型上扩展mySlice的方法，实现和内置的slice一模一样的功能
+
+    //给这个实例的所在的类的原型中增加一个mySlice方法，先判断这个原型中是否有这个方法。
+    if ('mySlice' in Array) {
+        //有就报错。
+        console.error("Uncaught ReferenceError: " + "mySlice" + " is existed");
+    } else {
+        //没有就给Array的原型上增加一个mySlice方法，返回值为这个实例，或者说调用这个方法的数组
+        Array.prototype.mySlice = function mySlice() {
+            /*
+             *Find the contents of the specified interval in an array
+             *@parameter:
+             * arguments:Maximum support 2 Parameters
+             *@return:
+             * result:[Array]Return value of array
+             *Is optimized by SageLiu 2015/11/3 v2.0
+             * The processing of the incoming parameters is optimized.
+             *Is optimized by SageLiu 2015/11/3 v3.0
+             * To solve the array index out of bounds
+             */
+
+            //定义一个result来存储返回值
+            var result = [];
+            //下面的操作用switch实现可能会好一些？
+            //如果只传递一个参数的时候，返回从参数索引到末尾索引的数组
+            //如果传入的参数是非纯数字组成的字符串类型的，则当做0来处理
+            //特别注意的是：传入的第二个参数是undefined的时候，undefined当做数组的长度来处理
+           // arguments[1] === undefined ? arguments[1] = this.length : null;
+            arguments[1] === undefined ? arguments.length=1 : null;
+
+            //如果判断是不是一个数isNaN()方法返回为NaN的【引入数据类型的或者非纯数字组成的字符串或者NaN，或者undefined或者null】或者利用Number()方法转换为数字为0的【false、null、""、不传】
+            for (var index in arguments) {
+                if (isNaN(arguments[index]) || Number(arguments[index] === 0)) {
+                    arguments[index] = 0;
+                }
+                if (isNaN(Number(arguments[index]))) {
+                    console.error("Uncaught ReferenceError: " + arguments[index] + " is not defined");
+                    break;
+                }
+            }
+
+            //当接收到的参数为负值的时候，这个参数被修改为经过数组长度加上（这个参数向上取整）处理后的结果
+            //当接收到的参数为正值的时候，这个参数被修改为经过这个参数向下取整处理后的结果
+            Number(arguments[0]) < 0 ? arguments[0] = this.length + Math.ceil(Number(arguments[0])) : arguments[0] = Math.floor(Number(arguments[0]));
+
+            //如果经过以上处理之后，数组下标仍然小于0，就当做0来处理。
+            arguments[0] < 0 ? arguments[0] = 0 : null;
+
+            //当接收到的第一个参数经过以上处理之后，数组下标越界的时候，第二个参数被处理为数组长度,可以等于数组长度，因为这是左臂右开区间
+            Number(arguments[0]) > this.length ? arguments[0] = this.length : null;
+
+
+            //根据传入参数的个数来分别进行操作
+            switch (arguments.length) {
+                //不传的话，克隆一份数组的值进行返回。
+                case 0:
+                    return this;
+                    break;
+                //传入一个的话，返回当前索引到末尾的数组。
+                case 1:
+                    for (var i = Number(arguments[0]); i < this.length; i++) {
+                        result[result.length] = this[i];
+                    }
+                    break;
+                //传入多个的话，忽略2个以后的参数
+                default:
+                    arguments.length = 2;
+                    //当接收到的参数为负值的时候，这个参数被修改为经过数组长度加上（这个参数向上取整）处理后的结果
+                    //当接收到的参数为正值的时候，这个参数被修改为经过这个参数向下取整处理后的结果
+
+                    Number(arguments[1]) < 0 ? arguments[1] = this.length + Math.ceil(Number(arguments[1])) : arguments[1] = Math.floor(Number(arguments[1]));
+                    //当接收到的第二个参数数组下标越界的时候，第二个参数被处理为数组长度,可以等于数组长度，因为这是左臂右开区间
+                    Number(arguments[1]) > this.length ? arguments[1] = this.length : null;
+                    //当接收到的第二个参数大于第一个参数的时候，返回查找到的从索引第一个参数到索引第二个参数-1的那个所组成的数组
+                    if (Number(arguments[0]) < Number(arguments[1])) {
+                        for (var j = Number(arguments[0]); j < Number(arguments[1]); j++) {
+                            result[result.length] = this[j];
+                        }
+                    }
+                //反之返回的是一个空数组
+            }
+
+            return result;
+//            //清空返回结果所占用的空间。--然并卵，因为return后面的语句不会执行了。
+//            result = null;
+        };
+    }
+    /*
+     思考方式：
+     一.参数类型
+     二.参数个数
+     三.报错&&错误类型处理
+     */
+    //一、当传递的参数中含有引用数据类型的时候----都会当做0来处理
+    //利用Number能转换为数字的，就当做数字操作，转换为NaN的，就当做0操作。
+    //所有的函数及不能转换为纯数字的对象都当做是0处理。
+    //特别注意的是：传入的第二个参数是undefined的时候，undefined当做数组的长度来处理
+    //
+    //2.下面是当传递的参数中都是基本数据类型：--ok
+    //1）NaN 当传递的参数中有NaN的时候，会将NaN当做0来处理。--ok
+    //2）null 当传递的参数中有null的时候，将null当做0来处理--ok
+    //3）undefined 当传递的值包含undefined的时候，传入的第一个参数是undefined的时候，undefined当做0来处理，传入的第二个参数是undefined的时候，undefined当做数组的长度来处理，返回从参数1索引到末尾的数组--ok
+    //4）空--不传  当不传递参数的时候，当做0来处理--ok
+    //5）""  当传递的是一个空字符串的时候，将空字符串当做0来处理--ok
+    //6）boolean 当传递boolean的时候。true为1，false为0--ok
+    //7）string,当传递的是非纯数字组成的字符串的时候，将这个字符串当做0来处理。--ok
+    //8）正常的数字：--ok
+    //二、根据传递的参数的个数
+    //1.当传递的是一个空字符串的时候,返回克隆后的数组--ok
+    //2.当没有传递参数的时候，返回this，也就是执行这个方法的数组，相当于克隆了一份。--ok
+    //3.当只传递一个参数的时候，返回从参数索引到末尾索引的数组--ok
+    //4.当传递的参数超过两个的时候，将超过两个的参数都忽略掉--ok
+    //4.1.当输入的第二个参数大于第一个参数的时候，返回查找到的从索引第一个参数到索引第二个参数-1的那个所组成的数组--ok
+    //4.2.当输入的参数第二个参数大于或等于第一个参数的时候，返回值为空数组--ok
+    //4.3.当输入的参数Number()返回的值小于0，这次参数修改为经过数组长度加上这个参数处理后的结果
+    //5.关于小数的处理
+    //5.1.正小数，向下取整Math.floor()--ok
+    //5.2.负小数，向上取整Math.ceil()+this.length--ok
+    //三、数组下标越界
+
+    //测试其一：
+    var ary222 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].mySlice( 5 ,undefined);
+    console.log(ary222);
+    var ary333 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].mySlice( 5 ,aaa);
+    console.log(ary333);
+
+</script>
+</body>
+</html>

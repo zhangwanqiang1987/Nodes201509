@@ -37,19 +37,28 @@
 
 <script type="text/javascript">
     var ary = ["red", "orange", "yellow", "green", "lightblue", "blue", "purple"];
-    function bindEvent() {
-        var btnList = document.getElementsByTagName("input");
-        for (var i = 0; i < btnList.length; i++) {
-            btnList[i].zhuFeng = i;
-            btnList[i].onclick = function () {
-                //第一个按钮 索引是0  ->ary[0]
-                //第二个按钮 索引是1  ->ary[1]
-                //...
-                document.body.style.backgroundColor = ary[this.zhuFeng];
+//    function bindEvent() {
+//        var btnList = document.getElementsByTagName("input");
+//        for (var i = 0; i < btnList.length; i++) {
+//            btnList[i].zhuFeng = i;
+//            btnList[i].onclick = function () {
+//                //第一个按钮 索引是0  ->ary[0]
+//                //第二个按钮 索引是1  ->ary[1]
+//                //...
+//                document.body.style.backgroundColor = ary[this.zhuFeng];
+//            }
+//        }
+//    }
+//    bindEvent();
+    var btnList = document.getElementsByTagName("input");
+            for (var i = 0; i < btnList.length; i++) {
+                btnList[i].zhuFeng = i;
+                (function(i){
+                    btnList[i].onclick = function () {
+                        document.body.style.backgroundColor = ary[this.zhuFeng];
+                    }
+                })(i);
             }
-        }
-    }
-    bindEvent();
 </script>
 </body>
 </html>
