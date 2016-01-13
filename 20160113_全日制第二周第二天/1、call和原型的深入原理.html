@@ -16,8 +16,7 @@
     //fn.call(100);//->fn.call===fn.__proto__.call===Function.prototype.call
     //->fn首先通过原型链模式找到Function.prototype上的call这个方法,然后让call方法执行,然后给它传递一个参数值100
     //->call方法执行,它的作用是改变this关键字的
-    //1)首先把fn这个方法中的this改变为第一个参数传递进来的值100
-    //2)再让fn这个函数执行
+    //1)首先把fn这个方法中的this改变为第一个参数传递进来的值100//2)再让fn这个函数执行
 
     //我们来模拟call的实现
     //    Function.prototype.myCall = function () {

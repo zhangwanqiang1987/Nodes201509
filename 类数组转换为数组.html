@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    var utils={
+    listToArray: function (likeAry){
+        var ary=[];
+        try{
+            ary=Array.prototype.slice.call(likeAry,0);
+        }catch (e){
+            for (var i=0;i<likeAry.length;i++){
+                ary[ary.length]=likeAry[i];
+            }
+            return ary;
+        }
+    }
+
+    }
+
+
+</script>
+</body>
+</html>

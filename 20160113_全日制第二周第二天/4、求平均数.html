@@ -86,7 +86,7 @@
     //除了slice方法以外,arguments类数组可以借用数组的任意方法来进行操作,因为arguments是类数组,和数组除了数据类型不一样,其他基本都一样
     function avgFn() {
         [].sort.call(arguments, function (a, b) {
-            return a - b;
+             return a - b;
         });
         [].shift.call(arguments);
         [].pop.call(arguments);
