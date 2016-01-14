@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body,div,table,thead,tbody,tr,th,td{
+            margin: 0;
+            padding: 0;
+            font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+            font-size: 14px;
+            -webkit-user-select:none;
+        }
+        .box{
+            margin: 10px auto;
+            padding: 20px;
+            width: 400px;
+            border: 1px solid #000;border-radius: 10px;
+            box-shadow: 3px 3px 10px 0 #999;
+        }
+        #tab thead tr{
+            height:35px;
+            line-height: 35px;background-color: #000;
+            color:#fff;
+        }
+        #tab thead tr th{
+            width: 100px;
+        }
+        #tab thead tr th.cursor{
+            cursor：pointer;
+        }
+        #tab tbody tr{
+            height:30px;
+            line-height: 30px;
+        }
+        #tab tbody tr td{
+            text-align: center;
+        }
+        #tab tbody tr.bg1{
+            background-color: #ffe470;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <table id="tab" cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <th class="cursor">姓名</th>
+            <th class="cursor">年龄</th>
+            <th class="cursor">分数</th>
+            <th>性别</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+</div>
+<script type="text/javascript">
+    var jsonAry = [
+        {"name": "赵老大", "age": 45, "score": 89, "sex": 0},
+        {"name": "钱二妞", "age": 24, "score": 67, "sex": 1},
+        {"name": "孙三娘", "age": 38, "score": 79, "sex": 1},
+        {"name": "李四爷", "age": 30, "score": 80, "sex": 0},
+        {"name": "周姑娘", "age": 65, "score": 56, "sex": 1},
+        {"name": "吴三桂", "age": 26, "score": 26, "sex": 0}
+    ];
+</script>
+</body>
+</html>
