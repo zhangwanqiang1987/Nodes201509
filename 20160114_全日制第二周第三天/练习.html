@@ -67,6 +67,33 @@
         {"name": "周姑娘", "age": 65, "score": 56, "sex": 1},
         {"name": "吴三桂", "age": 26, "score": 26, "sex": 0}
     ];
+    var utils={
+        listToArray:function (likeAry){
+            var ary=[];
+            try{
+                ary=Array.prototype.slice.call(likeAry,0);
+            } catch(e){
+                for(var i=0;i<likeAry.length;i++){
+                    ary[ary.length]=likeAry[i];
+                }
+            }
+            return ary;
+        },
+        toJSON:function(str){
+            var obj=null;
+            try{
+                obj=JSON.parse(str);
+            }catch(e){
+                obj=evel("("+str+")")
+            }
+            return obj;
+        }
+    };
+    var oTab=document.getElementById("tab");
+    var tHead=oTab.tHead;
+    var tBody=oTab.tBodies[0];
+    var oThs=tHead.row[0].cells;
+    var oTabs=tBody.rows;
 </script>
 </body>
 </html>
