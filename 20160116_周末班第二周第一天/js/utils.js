@@ -1,4 +1,4 @@
-//采用单例模式来封装我们常用的方法库,我们只需要把所有的常用的方法都放在utils这个命名空间下即可
+﻿//采用单例模式来封装我们常用的方法库,我们只需要把所有的常用的方法都放在utils这个命名空间下即可
 var utils = {
     //listToArray:实现将类数组转换为数组
     listToArray: function (likeAry) {

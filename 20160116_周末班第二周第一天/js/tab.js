@@ -1,4 +1,4 @@
-//1、获取我们接下来要操作的元素
+﻿//1、获取我们接下来要操作的元素
 var oTab = document.getElementById("tab");
 var tHead = oTab.tHead;
 var tBody = oTab.tBodies[0];
