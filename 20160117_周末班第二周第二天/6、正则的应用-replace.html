@@ -64,16 +64,16 @@
 
 
     //实战2：模板引擎实现的简易原理
-    //    var ary = ["令狐冲", "25", "china", "独孤九剑"];
-    //    var str = "my name is {0}，my age is {1}，i com from {2}，i can do {3}~~";
-    //    //->"my name is 令狐冲，my age is 25，i com from china，i can do 独孤九剑~~";
-    //    var reg = /{(\d)}/g;
-    //    str = str.replace(reg, function () {
-    //        //arguments[0] ->"{0}"
-    //        //arguments[1] ->"0"
-    //        return ary[arguments[1]];
-    //    });
-    //    console.log(str);//->"my name is 令狐冲，my age is 25，i com from china，i can do 独孤九剑~~"
+      var ary = ["令狐冲", "25", "china", "独孤九剑"];
+      var str = "my name is {0}，my age is {1}，i com from {2}，i can do {3}~~";
+       //->"my name is 令狐冲，my age is 25，i com from china，i can do 独孤九剑~~";
+      var reg = /{(\d)}/g;
+       str = str.replace(reg, function () {
+          //arguments[0] ->"{0}"
+          //arguments[1] ->"0"
+          return ary[arguments[1]];
+       });
+       console.log(str);//->"my name is 令狐冲，my age is 25，i com from china，i can do 独孤九剑~~"
 </script>
 </body>
 </html>
