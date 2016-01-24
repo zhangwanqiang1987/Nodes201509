@@ -1,3 +1,4 @@
+listToArray:类数组转换为数组
 var utils = {
     listToArray: function (likeAry) {
         var ary = [];
@@ -14,6 +15,10 @@ var utils = {
         return "JSON" in window ? JSON.parse(str) : eval("(" + str + ")");
     }
 };
+getCss:获取元素经过当前浏览器计算的样式
+
+
+
 
 utils.getCss = function (curEle, attr) {
     var val = reg = null;
@@ -31,7 +36,7 @@ utils.getCss = function (curEle, attr) {
     reg = /^-?\d+(\.\d+)?(px|em|rem|pt)?$/;
     return reg.test(val) ? parseFloat(val) : val;
 };
-
+offset:获取圆度距离body的偏移量（不管body是否为父级参照物）
 utils.offset = function (curEle) {
     var t = curEle.offsetTop, l = curEle.offsetLeft, p = curEle.offsetParent;
     while (p) {
