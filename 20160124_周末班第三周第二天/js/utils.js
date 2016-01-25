@@ -1,4 +1,4 @@
-var utils = {
+﻿var utils = {
     //listToArray:将类数组转换为数组
     listToArray: function listToArray(likeAry) {
         var ary = [];
@@ -115,7 +115,7 @@ utils.sibling = function sibling(curEle) {
     return ary;
 };
 
-//sibling:获取当前元素的兄弟元素节点(哥哥+弟弟)
+//siblings:获取当前元素的兄弟元素节点(哥哥+弟弟)
 utils.siblings = function sibling(curEle) {
     return this.prevAll(curEle).concat(this.nextAll(curEle));
 };
