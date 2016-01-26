@@ -1,4 +1,4 @@
-JS中处理兼容的方式总结:
+﻿JS中处理兼容的方式总结:
 
 1、使用try、catch来处理兼容
   ->原理:在try中让JS代码执行,如果执行过程中报错了,说明不兼容,我们在catch中用其他的方式来实现我们的兼容处理
@@ -57,13 +57,13 @@ JS中处理兼容的方式总结:
   ->例如:获取元素的样式,我们在标准浏览器中使用window.getComputedStyle,在IE6~8使用currentStyle
   ->使用window.navigator.userAgent来获取当前浏览器的版本信息
 
-  function getCss(curEle,attr){
-     var val=null;
-     var reg=/MSIE [6-8]\.0/;
-     if(reg.test(navigator.userAgent)){
-        val=curEle.currentStyle[attr];
-     }else{
-        val=window.getComputedStyle(curEle,null)[attr];
-     }
-     return val;
-  }
+ function getCss(cueEle,attr){
+	var val=null;
+	var reg=/MSIE [6-8]\.0/;
+       if(reg.test(navigator,userAgent)){
+	var=curEle.currentStyle[attr];
+	}else{
+	var=window.getCompytedStyle(cueEle,null)[atte];
+	}
+	return val;
+	}
