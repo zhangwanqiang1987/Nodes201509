@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -20,7 +20,7 @@
         //->不兼容处理
         for (var i = 0; i < this.length; i++) {
             typeof callBack === "function" ? callBack.call(context, this[i], i, this) : null;
-        }
+        }     上下文    当前项  索引  数组本身
     };
 
     var ary = [12, 23, 34, 45, 56];
