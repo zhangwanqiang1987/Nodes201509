@@ -24,7 +24,7 @@
 
 <script type="text/javascript">
     //1、什么是事件?
-    //->浏览器天生自带的一些行为:onclick、onmouseover(onmouseenter)、onmouseout(onmouseleave)、onmousemove、onmousedown、onmouseup、onmousewheel(鼠标滚轮滚动行为)、onscroll、onload、键盘相关的行为onkeydown、onkeyup、文本框的一些行为onblur(失去焦点)、onfocus(获取焦点)...
+    //->浏览器天生自带的一些行为:onclick、onmouseover(onmouseenter)、onmouseout(onmouseleave)、onmousemove、onmousedown、onmouseup、onmousewheel(鼠标滚轮滚动行为)、onscroll(滚动条滚动行为)、onload(加载行为)、键盘相关的行为onkeydown、onkeyup、文本框的一些行为onblur(失去焦点)、onfocus(获取焦点)...
     //->以上行为是天生就有的,不管有没有给这些行为绑定方法,当触发对应操作的时候,行为都会发生
     //->如果想在行为触发的时候做一些事情，我们只需要给行为绑定对应的方法即可"事件绑定"
     //    var outer = document.getElementById("outer");
@@ -43,7 +43,7 @@
     //        //->MouseEvent->UIEvent->Event->Object
     //        //->MouseEvent 鼠标事件对象,是由多组键值对组成的
     //        //->在事件对象中存储了我们当前操作鼠标的相关信息
-    //        //type:事件行为类型"click"  srcElement:事件源 clientX/clientY...
+    //        //type:事件行为类型"click"  srcElement:事件源(在哪个元素上发生的时间，事件源就是谁) clientX/clientY...
     //    };
     //->当我们点击行为触发的时候,不仅仅把对应的函数执行了,而且浏览器还默认的给这个函数传递了一个参数值
     outer.onclick = function (e) {
