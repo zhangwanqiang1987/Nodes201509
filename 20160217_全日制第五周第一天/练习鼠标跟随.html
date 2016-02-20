@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body,div{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            width: 300px;
+            height: 300px;
+            background: #008000;
+        }
+        #mark{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background: #ff3333;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript">
+    var box = document.getElementById("box");
+    var offL = box.offsetLeft, offT = box.offsetTop;
+    box.onmouseenter=function(e){
+        e=e||window.event;
+        var mark=document.createElement("div");
+        mark.id="mark";
+        mark.style.left= e.clientX-offL+5+"px";
+        mark.style.top= e.clientY-offT+5+"px";
+        this.appendChild(mark);
+    };
+    box.onmousemove=function(e){
+        e=e||window.event;
+        var mark=document.getElementById("mark");
+        if(mark){
+            mark.style.left= e.clientX-offL+5+"px";
+            mark.style.top= e.clientY-offT+5+"px";
+        }
+    };
+    box.onmouseleave=function(e){
+        var mark=document.getElementById("mark");
+        if(mark){
+            this.removeChild(mark);
+        }
+    };
+
+</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body, div, ul, li, input, a {
+            margin: 0;
+            padding: 0;
+            font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+            font-size: 14px;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+            color: #000;
+        }
+
+        a:hover, a:active, a:target {
+            text-decoration: none;
+            color: #000;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        input {
+            display: block;
+            outline: none;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body{
+            border-top: 1px solid transparent;
+        }
+
+        .box {
+            margin: 100px auto;
+            width: 400px;
+            overflow: hidden;
+        }
+
+        .box input {
+            padding: 0 10px;
+            width: 300px;
+            height: 35px;
+            border: 1px solid #ccc;
+        }
+
+        .box ul {
+            display: none;
+            position: relative;
+            top: -1px;
+            left: 0;
+            border: 1px solid #ccc;
+        }
+
+        .box ul li {
+            height: 35px;
+            line-height: 35px;
+            cursor: pointer;
+        }
+
+        .box ul li a {
+            padding: 0 10px;
+        }
+
+        .box ul li a:hover {
+            background: #FFF38F;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="box">
+    <input type="text" id="searchInp"/>
+    <ul id="searchList">
+        <li><a href="javascript:;">珠峰培训</a></li>
+        <li><a href="javascript:;">珠峰培训javascript</a></li>
+        <li><a href="javascript:;">珠峰培训nodejs</a></li>
+        <li><a href="javascript:;">珠峰培训学员都很漂亮</a></li>
+        <li><a href="javascript:;">珠峰培训好吗?</a></li>
+    </ul>
+</div>
+    <script type="text/javascript">
+        var searchInp=document.getElementById("searchInp"),
+                searchList=document.getElementById("searchList");
+        searchInp.onfocus=searchInp.onkeyup=function(){
+            var val=this.value.replace(/(^ +| +$)/g,"");
+            searchList.style.display=val.length===0?"none":"block";
+        };
+        document.body.onclick=function(e){
+            e=e||window.event;
+            var tar= e.target= e.srcElement;
+            if(tar.tagName.toLowerCase()==="li"&&tar.parentNode.id==="searchList"){
+                searchInp.value=tar.getElementsByTagName("a")[0].innerHTML;
+                searchList.style.display="none";
+                return;
+            }
+            if(tar.tagName.toLowerCase()==="a"&&tar.parentNode.parentNode.id==="searchList"){
+                searchInp.value=tar.innerHTML;
+                searchList.style.display="none";
+                return;
+            }
+            if(tar.id==="searchInp"){
+                return;
+            }
+            searchList.style.display="none";
+        };
+    </script>
+</body>
+</html>
