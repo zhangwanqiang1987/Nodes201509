@@ -18,7 +18,7 @@ function bind(curEle, evenType, evenFn) {
     tempFn.photo = evenFn;
 
     //->首先判断该自定义属性之前是否存在,不存在话创建一个,由于要存储多个方法化妆后的结果,所以我们让其值是一个数组
-    if (!curEle["myBind" + evenType]) {
+    if (!curEle["myBind" + evenType]) {//根据类型
         curEle["myBind" + evenType] = [];
     }
     //->解决重复问题：每一次自己在往自定义属性对应的容器中添加前，看一下之前是否已经有了，有的话就不用在重新的添加了，同理也不需要往事件池中存储了
@@ -40,7 +40,7 @@ function unbind(curEle, evenType, evenFn) {
         return;
     }
     //->拿evenFn到curEle["myBind"]这里找化妆后的结果,找到之后在事件池中把换装后的结果给移出事件池
-    var ary = curEle["myBind" + evenType];
+    var ary = curEle["myBind" + evenType];//根据不同类型创建自己的事件池
     for (var i = 0; i < ary.length; i++) {
         var cur = ary[i];
         if (cur.photo === evenFn) {
@@ -76,7 +76,8 @@ function off(curEle, evenType, evenFn) {
     var ary = curEle["myEvent" + evenType];
     for (var i = 0; i < ary.length; i++) {
         var cur = ary[i];
-        if (cur === evenFn) {
+
+         if (cur === evenFn) {
             ary.splice(i, 1);
             break;
         }

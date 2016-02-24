@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    function bind(curEle,evenType,evenFn){
+        if("addEventListener"in document){
+            curEle.addEventListener(evenType,evenFn,false);
+            return;
+        }
+        var tempFn=function(){
+            evenFn.call(curEle);
+        };
+        tempFn.photo=evenFn;
+        if(!curEle["myBind"+evenType]){
+            curEle["myBind"+evenType]=[];
+        }
+        var ary=curEle["mayBind"+evenType];
+    }
+</script>
+</body>
+</html>

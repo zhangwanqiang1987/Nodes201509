@@ -39,9 +39,11 @@
     //    }
 
     //box.attachEvent("onclick",fn1.call(box));//->在给box绑定事件的时候,首先执行fn1方法,让方法中的this变为box,然后把fn1执行的返回结果绑定给onclick
-
+    //是在点击的时候执行fn1，而fn1.call(box)是在点击之前就把fn1就执行了  box.attachEvent("onclick",fn1.bind(box))-->bind改变this关键字暂时不执行fn1
+    //box.attachEvent("onclick",fn1.call(box))-->call也是改变this关键字同时执行方法fn1
     //    box.attachEvent("onclick", function () {
-    //        fn1.call(box);
+                //this-->window
+    //        fn1.call(box);-->解决this
     //    });
     //->这样虽然解决了this的问题,但是又抛出了一个新的问题，不知道该如何删除了(我们不知道匿名函数是谁)
 
