@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+    font-size: 14px;
+    color: #777777;
+}
+ul,li{
+    list-style: none;
+}
+.box{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 230px;
+    border: 1px solid #ccc;
+    background: #fafafa;
+}
+.box .boxOne{
+    width: 100%;
+    /*height: 165px;*/
+}
+.box .boxOne h1{
+    margin: 20px 0 0 20px;
+    font-weight: lighter;
+    font-size:18px;
+    color: #333333;
+}
+.box .boxOne p{
+    font-size: 18px;
+    display: block;
+    position: absolute;
+    right: 18px;
+    top: 18px;
+}
+.box .boxOne ul{
+   margin: 16px 0 16px 22px;
+}
+.box .boxOne ul li {
+    padding: 5px 0;
+
+}
+.box .boxOne ul li.li1{
+    padding-top: 0;
+}
+.box .boxOne ul li.li2{
+    padding-bottom: 0;
+}
+.box .boxOne ul li span{
+   font-size: 14px;
+    padding-right: 23px;
+    cursor: pointer;
+}
+.box .boxTwo{
+    display: none;
+}

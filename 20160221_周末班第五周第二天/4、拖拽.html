@@ -15,20 +15,6 @@
         }
 
         #box {
-            /*position: absolute;
-            top: 50%;
-            left: 50%;
-            margin: -100px 0 0 -100px;*/
-
-            /*
-             IE下的兼容不好，主要应用于移动端的开发
-             position: absolute;
-             top: 0;
-             left: 0;
-             bottom: 0;
-             right: 0;
-             margin: auto;*/
-
             position: absolute;
             width: 200px;
             height: 200px;
@@ -86,7 +72,6 @@
         e = e || window.event;
         var curL = (e.clientX - this["strX"]) + this["strL"];
         var curT = (e.clientY - this["strY"]) + this["strT"];
-\
         //->边界判断
         var minL = 0, minT = 0, maxL = (document.documentElement.clientWidth || document.body.clientWidth) - this.offsetWidth, maxT = (document.documentElement.clientHeight || document.body.clientHeight) - this.offsetHeight;
         curL = curL < minL ? minL : (curL > maxL ? maxL : curL);
