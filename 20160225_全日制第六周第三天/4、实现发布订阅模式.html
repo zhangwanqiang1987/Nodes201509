@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>观察者模式（发布订阅模式）</title>
 </head>
 <body>
 <script type="text/javascript">
@@ -22,7 +22,7 @@
         ary.push(fn);
     }
 
-    //->fire:把上述我们制定的计划表发布出去,并且雇一个秘书随时关注这个计划,当计划发生(自定义这个行为发生的时候),我们把之前写在纸上的计划依次的执行
+    //->fire:把上述我们制定的计划表发布出去,并且雇一个秘书随时关注这个计划,当计划发生(自定义这个行为发生的时候),我们把之前写在纸上的计划依次的执行 通知
     function fire(type, e) {
         //->this需要是当前操作的这个元素
         var ary = this["book" + type];

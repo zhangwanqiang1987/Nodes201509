@@ -47,8 +47,8 @@ ul,li{
     padding-bottom: 0;
 }
 .box .boxOne ul li span{
-   font-size: 14px;
-    padding-right: 23px;
+    font-size: 14px;
+    margin-right: 23px;
     cursor: pointer;
 }
 .box .boxTwo{

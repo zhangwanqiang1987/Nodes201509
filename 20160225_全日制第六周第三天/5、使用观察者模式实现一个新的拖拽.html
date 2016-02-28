@@ -34,7 +34,7 @@
 <script type="text/javascript" src="js/drag.js"></script>
 <script type="text/javascript">
     var box = document.getElementsByTagName("div");
-    for (var i = 0; i < 1; i++) {
+    for (var i = 0; i < box.length; i++) {
         var curBox = box[i];
         zhufengEvent.on(curBox, "mousedown", down);
         on(curBox, "zhufengDragStart", setIndex);
