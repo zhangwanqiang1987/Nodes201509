@@ -31,12 +31,12 @@
 
     //->onreadystatechange:在请求的过程中只要状态发生改变了(从发送给后台Request开始到Response响应结束,这个阶段又可以分为几个小的阶段),我们的onreadystatechange行为都会被触发
     //->阶段:0UNSENT请求还没有发送 1OPENED已经打开链接地址了 2HEADERS_RECEIVED我们已经得到了响应头信息 3LOADING响应的数据正在处理中 4DONE请求完成,我们已经获取到需要的数据了
-    xhr.onreadystatechange = function () {
-        //this->xhr
+    xhr.onreadystatechange = function () {//监听
+            //this->xhr         this在IE6及以下不兼容得用xhr
         var state = this.readyState;
         if (state === 2) {
-            console.log(this.getResponseHeader("Date"));
-            //this.getAllResponseHeaders()
+            console.log(this.getResponseHeader("Date"));//获取响应头
+            //this.getAllResponseHeaders() 获取所有的响应头，体 。。
         }
 
         //state等于4说明请求结束,但是服务器给我们的内容不一定是我们想要的,我们还需要结合HTTP状态码判断 ->this.status获取HTTP状态码
@@ -53,10 +53,17 @@
     console.log("ok");
 
 
-    //响应头Content-Type:text/plain、application/json...
-
+    //响应头Content-Type:        text/plain、   application/json...
+       //设定相应主题中内容的格式     //纯文本        json格式
     //倒计时:参考时间不能使用本地的,需要向服务器发送请求获取服务器的时间,Ajax/JSONP通过地址发送请求,在响应头信息中包含了需要的服务器时间; 导致一个问题：我们获取时间的过程需要一点点时间进行HTTP请求处理,这样时间和服务器就有一定的偏差了,也就是HTTP请求时间越短,我们的时间差越小;
     //->在Ajax请求状态码为2(响应头已经得到了)我们就获取参考的服务器时间
+    //前端页面是UTF-8，如果我们从服务器请求回来的数据不是UTF-8编码格式，那么 获取到的内容中，中文汉字会出现乱码
+    //需要我们使用“UTF-8”到底的原则：前端页面，JS,CSS,后台代码，数据库，请求传递的数据统一都采用一个编码UTF-8
+   // Content-Type:        text/plain、   application/json...
+    //设定相应主题中内容的格式     //纯文本        json格式
+    //前端：设置请求头，获取响应头
+    //在前端的JS中我们可以使用xhr.setRequestHeader([name],[value])设置请求头信息，可以使用xhr.getResponseHeader([name],[value])获取响应头信息
+    //服务器端：获取请求头，设置响应头
 </script>
 </body>
 </html>
