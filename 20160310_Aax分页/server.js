@@ -58,7 +58,6 @@ var server = http.createServer(function (request, response) {
         for (var i = 0; i < con.length; i++) {
             var cur = con[i];
             if (cur.num == num) {
-                obj = cur;
                 break;
             }
         }
@@ -68,7 +67,8 @@ var server = http.createServer(function (request, response) {
         return;
     }
 });
-server.listen(8888);
+//server.listen(8888);
+server.listen(63342);
 
 
 

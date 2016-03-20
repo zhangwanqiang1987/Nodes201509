@@ -16,14 +16,14 @@ if(winW/winH<desW/desH){//按照高度比例去缩放
     oLi.addEventListener("touchstart",start,false);
     oLi.addEventListener("touchmove",move,false);
     oLi.addEventListener("touchend",end,false);
-})
+});
 
 function start(e){
     this.startX = e.changedTouches[0].pageY;
 }
 function move(e){
     this.flag = true;
-    var moveTouch = e.changedTouches[0].pageY;
+    //    var moveTouch = e.changedTouches[0].pageY;
     var movePos = moveTouch-this.startX;
     var index = this.index;
     [].forEach.call(oLis,function(){
@@ -33,7 +33,7 @@ function move(e){
         }
         arguments[0].firstElementChild.id="";
 
-    })
+    });
     if(movePos>0){/*↓   movePos是正的值*/
         this.prevSIndex = (index == 0?oLis.length-1:index-1);
         //oLis[this.prevSIndex].style.webkitTransform = "translate(0,"+(-winH+movePos)+"px)";
@@ -43,8 +43,10 @@ function move(e){
         //oLis[this.prevSIndex].style.webkitTransform = "translate(0,"+(winH+movePos)+"px)";
         var duration = winH+movePos;
     }
+    //按照移动的距离比上设备的高度比例来缩放
+    //缩小的值是0~1之间的数想要从打到小酒要1减去缩放值就好
     this.style.webkitTransform = "scale("+(1-Math.abs(movePos)/winH*1/2)+")  translate(0,"+movePos+"px)";
-    oLis[this.prevSIndex].style.webkitTransform = "translate(0,"+duration+"px)"
+    oLis[this.prevSIndex].style.webkitTransform = "translate(0,"+duration+"px)";
     oLis[this.prevSIndex].className = 'zIndex';
     oLis[this.prevSIndex].style.display ="block";
 }
@@ -52,7 +54,7 @@ function end(e){
     if(this.flag){ //为了区分是点击事件还是触摸事件
         oLis[this.prevSIndex].style.webkitTransform = "translate(0,0)";
         oLis[this.prevSIndex].style.webkitTransition = "0.5s ease-out";
-        oLis[this.prevSIndex].addEventListener("webkitTransitionEnd",function(e){
+        oLis[this.prevSIndex].addEventListener("webkitTransitionEnd",function(e){//让当前transition清空防止动画积累
             if(e.target.tagName =="LI"){
                 this.style.webkitTransition = "";
             }
